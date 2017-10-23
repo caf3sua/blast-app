@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "keywordId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20170930102741",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "keyword_user",
+    "pagination": "pager"
+}

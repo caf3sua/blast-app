@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "itemId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170925073542",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "status_item",
+    "pagination": "pager"
+}

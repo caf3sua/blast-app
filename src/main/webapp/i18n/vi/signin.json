@@ -1,0 +1,15 @@
+{
+    "signin": {
+        "button": "Đăng nhập",
+        "form": {
+            "username-placeholder": "Tên người dùng"
+            , "password-placeholder": "Mật khẩu"
+            , "forgot-lbl": "Quên mật khẩu"
+            , "no-account": "Bạn không có tài khoản?"
+            , "register-lbl": "Đăng ký"
+            , "download-lbl": "Tải ứng dụng"
+            , "term-condition-1": "Bằng việc sử dụng dịch vụ bạn đã đồng ý"
+            , "term-condition-2": "<a href='#'>Điều khoản sử dụng</a> và <a href='#'>Chính sách bảo mật</a> của chúng tôi"
+        }
+    }
+}

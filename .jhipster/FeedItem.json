@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "data",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "share",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "keywords",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170919074011",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "feed_item",
+    "pagination": "pager"
+}

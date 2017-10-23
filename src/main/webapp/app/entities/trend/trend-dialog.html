@@ -1,0 +1,52 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTrendLabel" data-translate="blastApp.trend.home.createLabel">Create or edit a Trend</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <div class="form-group">
+        	<md-input-container>
+          		<md-switch ng-model="vm.noShare">Private</md-switch>
+        	</md-input-container>
+        </div>
+        
+        <div class="row">
+        	<div class="col-md-6">
+        		<input type="file" ng-file-model="vm.imageData" accept="image/*" />
+        
+		        <div>
+		        	<img class="img-new-trend-containner" ng-src="{{vm.imageData.data}}">
+		        </div>
+        	</div>
+			<div class="col-md-6">
+				<!-- Google vision -->
+				<div ng-repeat="vision in vm.visionData" class="vision-item">
+					<span class="label label-info ng-binding">{{vision.description}}</span>
+				</div>
+				<!-- Choose keyword -->
+				<h2 class="md-title">Input keyword.</h2>
+			    <md-chips
+			        ng-model="vm.keywords"
+			        readonly="false"
+			        md-removable="true"
+			        placeholder="Enter a keyword"
+			        delete-button-label="Remove Keyword"
+			        delete-hint="Press delete to remove keyword"
+			        secondary-placeholder="+Keyword"></md-chips>
+			</div>
+        </div>
+    </div>
+    <div class="modal-footer" ng-show="vm.keywords">
+        <button type="button" class="btn btn-default" ng-click="vm.storeCloud(0)">
+            <span class="glyphicon glyphicon-remove"></span>&nbsp;<span data-translate="entity.action.hate">Hate</span>
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="vm.storeCloud(1)">
+            <span class="glyphicon glyphicon-heart"></span>&nbsp;<span data-translate="entity.action.love">Like</span>
+        </button>
+    </div>
+</form>

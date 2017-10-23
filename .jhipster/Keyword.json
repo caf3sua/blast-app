@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "feedId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170923021824",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "keyword",
+    "pagination": "pager"
+}

@@ -1,0 +1,106 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTrendLabel">{{vm.keyword.name}}</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <!-- Tab data -->
+        <div class="row">
+			<md-content>
+			    <md-tabs md-dynamic-height md-border-bottom md-center-tabs="true">
+			    	<!-- Tab 1 -->
+			      	<md-tab>
+			      		<md-tab-label><img ng-src="content/images/icon/tab-planet.png"/></md-tab-label>
+			      		<md-tab-body>
+			      			<md-content class="md-padding">
+			      				<md-grid-list
+							        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+							        md-row-height-gt-md="1:1" md-row-height="4:3"
+							        md-gutter="8px" md-gutter-gt-sm="4px" >
+							        
+							        <md-grid-tile md-rowspan="1"
+								                  md-colspan="1"
+								                  md-colspan-sm="1"
+								                  md-colspan-xs="1"
+								                  ng-class="deepBlue">
+							        	<img class="img-trend-detail image-trend-detail-main" ng-src="{{vm.feedItem.imageUrl}}" />
+								      	<md-grid-tile-footer>
+								      		<span class="glyphicon glyphicon-remove"></span> {{vm.feedItem.keywordInfo.keyword.numberHate}}
+								      		<span class="glyphicon glyphicon-heart"></span> {{vm.feedItem.keywordInfo.keyword.numberLike}}
+								      	</md-grid-tile-footer>
+								    </md-grid-tile>
+							
+								    <md-grid-tile ng-repeat="item in vm.itemUserPost"
+								                  md-rowspan="1"
+								                  md-colspan="1"
+								                  md-colspan-sm="1"
+								                  md-colspan-xs="1"
+								                  ng-class="deepBlue" >
+										<img class="img-trend-detail" ng-src="{{item.imageUrl}}" />
+								      	<md-grid-tile-footer><h3>{{item.mainKeyword}}</h3></md-grid-tile-footer>
+								    </md-grid-tile>
+							  	</md-grid-list>
+				        	</md-content>
+			      		</md-tab-body>
+			      	</md-tab>
+			      	<!-- Tab 2 -->
+			      	<md-tab>
+			      		<md-tab-label><img ng-src="content/images/icon/tab-trash.png"/></md-tab-label>
+			      		<md-tab-body>
+			      			<md-content class="md-padding">
+				          		<md-grid-list
+							        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+							        md-row-height-gt-md="1:1" md-row-height="4:3"
+							        md-gutter="8px" md-gutter-gt-sm="4px" >
+							
+								    <md-grid-tile ng-repeat="item in vm.amazonItem"
+								                  md-rowspan="1"
+								                  md-colspan="1"
+								                  md-colspan-sm="1"
+								                  md-colspan-xs="1"
+								                  ng-class="deepBlue" >
+										<md-grid-tile-header>
+											{{item.offer.formattedPrice}}
+  										</md-grid-tile-header>
+										<img class="img-trend-detail" ng-src="{{item.smallImage.url}}" />
+								      	<md-grid-tile-footer><h3>{{item.title}}</h3></md-grid-tile-footer>
+								    </md-grid-tile>
+							  	</md-grid-list>
+				        	</md-content>
+			      		</md-tab-body>
+			      </md-tab>
+			      <!-- Tab 3: wiki -->
+			      <md-tab>
+			      		<md-tab-label><img ng-src="content/images/icon/tab-W.png"/></md-tab-label>
+			      		<md-tab-body>
+			      			<md-content class="md-padding">
+				          		{{vm.wikiInfo}}
+				        	</md-content>
+			      		</md-tab-body>
+			      </md-tab>
+			      <md-tab label="four">
+			      		<md-tab-label><img ng-src="content/images/icon/tab-BlackArrow.png"/></md-tab-label>
+			      		<md-tab-body>
+			      			<md-content class="md-padding">
+				          		<md-list-item ng-repeat="social in vm.socials">
+							    	<p> {{ social.name }} </p>
+							    	<md-switch class="md-secondary" ng-model="social.enabled"></md-switch>
+							  	</md-list-item>
+				        	</md-content>
+			      		</md-tab-body>
+			      </md-tab>
+			    </md-tabs>
+			</md-content>
+		</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  data-dismiss="modal" class="btn btn-default" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ok"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</form>

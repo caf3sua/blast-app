@@ -1,0 +1,24 @@
+{
+    "blastApp": {
+        "trend" : {
+            "home": {
+                "title": "Xu hướng",
+                "createLabel": "Thêm mới một xu hướng",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Trend"
+            },
+            "created": "Một Trend mới được tạo với định danh {{ param }}",
+            "updated": "Một Trend cập nhật với định danh {{ param }}",
+            "deleted": "Một Trend đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Trend {{ id }}?"
+            },
+            "detail": {
+                "title": "Trend"
+            },
+            "name": "Name",
+            "description": "Description",
+            "interval": "Interval",
+            "start-a-trend-lbl" : "Bắt đầu 1 xu hướng"
+        }
+    }
+}

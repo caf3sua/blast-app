@@ -1,0 +1,22 @@
+{
+    "blastApp": {
+        "keyword" : {
+            "home": {
+                "title": "Keywords",
+                "createLabel": "Thêm mới một Keyword",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Keyword"
+            },
+            "created": "Một Keyword mới được tạo với định danh {{ param }}",
+            "updated": "Một Keyword cập nhật với định danh {{ param }}",
+            "deleted": "Một Keyword đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Keyword {{ id }}?"
+            },
+            "detail": {
+                "title": "Keyword"
+            },
+            "name": "Name",
+            "feedId": "Feed Id"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "interval",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170923023150",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "trend",
+    "pagination": "pager"
+}

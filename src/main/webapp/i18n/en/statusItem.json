@@ -1,0 +1,25 @@
+{
+    "blastApp": {
+        "statusItem" : {
+            "home": {
+                "title": "Status Items",
+                "createLabel": "Create a new Status Item",
+                "createOrEditLabel": "Create or edit a Status Item"
+            },
+            "created": "A new Status Item is created with identifier {{ param }}",
+            "updated": "A Status Item is updated with identifier {{ param }}",
+            "deleted": "A Status Item is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Status Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Status Item"
+            },
+            "itemId": "Item Id",
+            "userId": "User Id",
+            "status": "Status",
+            "description": "Description",
+            "createDate": "Create Date"
+        }
+    }
+}

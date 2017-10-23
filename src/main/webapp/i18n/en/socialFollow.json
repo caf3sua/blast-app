@@ -1,0 +1,23 @@
+{
+    "blastApp": {
+        "socialFollow" : {
+            "home": {
+                "title": "Social Follows",
+                "createLabel": "Create a new Social Follow",
+                "createOrEditLabel": "Create or edit a Social Follow"
+            },
+            "created": "A new Social Follow is created with identifier {{ param }}",
+            "updated": "A Social Follow is updated with identifier {{ param }}",
+            "deleted": "A Social Follow is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Social Follow {{ id }}?"
+            },
+            "detail": {
+                "title": "Social Follow"
+            },
+            "providerId": "Provider Id",
+            "providerUserId": "Provider User Id",
+            "followUserId": "Follow User Id"
+        }
+    }
+}

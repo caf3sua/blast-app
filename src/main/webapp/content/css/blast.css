@@ -1,0 +1,243 @@
+.card-container.card {
+    max-width: 350px;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*
+ * Card component
+ */
+.card {
+    background-color: transparent;
+    /* just in case there no content*/
+    /* padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.no-background-download {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.profile-img-card {
+    width: 240px;
+    margin: 0 auto 0px;
+    display: block;
+}
+
+.blast-icon-img-card {
+    width: 60px;
+    margin: 0 auto 0px;
+    display: block;
+}
+
+.blast-btn-twitter {
+    width: 45px;
+}
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-group {
+	padding-bottom: 0px !important;
+    margin: 10px 0 0 0  !important;
+}
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin {
+	color: white !important;;
+    background-color: dodgerblue;
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+    color: white;
+    margin-top: 20px;
+    text-transform: none;
+}
+
+.forgot-pass-area {
+	text-align: center;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    background-color: rgb(12, 97, 33) !important;
+}
+
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus{
+    color: rgb(12, 97, 33);
+}
+
+.download-img-card {
+	width: 100%;
+	max-width: 130px;
+}
+
+.download-area {
+    margin-top: 12px;
+    padding-right: 3px !important;
+    padding-left: 10px !important;
+}
+
+.blast-slogan {
+	text-align: center;
+	color: white;
+    margin-top: -45px;
+    margin-bottom: 40px;
+    font-size: 25px;
+}
+
+.container-signin {
+	margin-top: 20px;
+}
+
+.blast-avatar-img {
+	width: 90px;
+    border-radius: 50%;
+}
+
+.blast-avatar-img-tab {
+	width: 20px;
+    border-radius: 50%;
+}
+
+md-grid-list {
+  margin: 8px; }
+
+.gray {
+  background: #f5f5f5; }
+
+.green {
+  background: #b9f6ca; }
+
+.yellow {
+  background: #ffff8d; }
+
+.blue {
+  background: #84ffff; }
+
+.purple {
+  background: #b388ff; }
+
+.red {
+  background: #ff8a80; }
+
+md-grid-tile {
+  transition: all 400ms ease-out 50ms; 
+}
+
+md-grid-tile img {
+	max-width: 350px;
+    max-height: 260px;
+}
+
+md-grid-tile img.img-trend-detail {
+	max-width: 250px;
+    max-height: 200px;
+}
+
+.image-trend-detail-main{
+	opacity: 0.6;
+}
+
+
+.img-new-trend-containner {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.vision-item {
+	float:left;
+	margin-right: 10px;
+}
+
+.img-user-trend-block {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.img-feed-detail {
+	max-height: 500px;
+	max-width: 500px;
+}

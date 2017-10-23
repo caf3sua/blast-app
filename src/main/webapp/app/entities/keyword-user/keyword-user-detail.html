@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="blastApp.keywordUser.detail.title">Keyword User</span> {{vm.keywordUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="blastApp.keywordUser.keywordId">Keyword Id</span></dt>
+        <dd>
+            <span>{{vm.keywordUser.keywordId}}</span>
+        </dd>
+        <dt><span data-translate="blastApp.keywordUser.userId">User Id</span></dt>
+        <dd>
+            <span>{{vm.keywordUser.userId}}</span>
+        </dd>
+        <dt><span data-translate="blastApp.keywordUser.updatedDate">Updated Date</span></dt>
+        <dd>
+            <span>{{vm.keywordUser.updatedDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="keyword-user-detail.edit({id:vm.keywordUser.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

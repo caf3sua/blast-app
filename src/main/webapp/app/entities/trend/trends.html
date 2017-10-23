@@ -1,0 +1,141 @@
+<div>
+    <h2 data-translate="blastApp.trend.home.title">Trends</h2>
+    <jhi-alert></jhi-alert>
+    
+    <div class="row">
+		<md-content>
+		    <md-tabs md-dynamic-height md-border-bottom md-center-tabs="true">
+		    	<!-- Hate -->
+		      	<md-tab>
+		      		<md-tab-label><span class="glyphicon glyphicon-remove"></span></md-tab-label>
+		      		<md-tab-body>
+		      			<md-content class="md-padding">
+		      				<md-grid-list
+						        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+						        md-row-height-gt-md="1:1" md-row-height="4:3"
+						        md-gutter="8px" md-gutter-gt-sm="4px" >
+						        
+						        <md-grid-tile class="yellow">
+						        	<md-button class="md-fab md-mini md-primary" aria-label="Use Android"  ui-sref="trend.new">
+						          		<img width="30px" src="content/images/icon-planet-white.png" alt="logo"/>
+						        	</md-button>
+							      	<md-grid-tile-footer>
+							        	<h3 data-translate="blastApp.trend.start-a-trend-lbl">Start a trend</h3>
+							      	</md-grid-tile-footer>
+							    </md-grid-tile>
+						
+							    <md-grid-tile ng-repeat="item in vm.itemTopKeywordFriendHate"
+							                  md-rowspan="1"
+							                  md-colspan="1"
+							                  md-colspan-sm="1"
+							                  md-colspan-xs="1"
+							                  ng-class="deepBlue" >
+									<md-grid-tile-header>
+										<div ng-repeat="user in item.keywordInfo.lstUserHate">
+											<img class="img-user-trend-block" ng-src="{{user.imageUrl}}" alt="{{user.displayName}}"/>
+										</div>
+    									<!-- <h3>UserA, UserB, UserC </h3> -->
+  									</md-grid-tile-header>
+  									<a ui-sref="trend.detail({feedId:item.representationFeedItem.id, keywordName:item.name})">
+										<img ng-src="{{item.representationFeedItem.imageUrl}}" />
+									</a>
+							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
+							    </md-grid-tile>
+						  	</md-grid-list>
+			        	</md-content>
+			        	
+			        	<md-content class="md-padding">
+		      				<h1 class="md-display-2">Discovery</h1>
+		      				<md-grid-list
+						        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+						        md-row-height-gt-md="1:1" md-row-height="4:3"
+						        md-gutter="8px" md-gutter-gt-sm="4px" >
+						        
+							    <md-grid-tile ng-repeat="item in vm.itemTopKeywordAllHate"
+							                  md-rowspan="1"
+							                  md-colspan="1"
+							                  md-colspan-sm="1"
+							                  md-colspan-xs="1"
+							                  ng-class="deepBlue" >
+				                  	<md-grid-tile-header>
+    									<span class="glyphicon glyphicon-remove"></span> {{item.numberHate}}
+  									</md-grid-tile-header>
+									<!-- <a ui-sref="trend.detail({feedId:item.representationFeedItem.id, keywordName:item.representationFeedItem.mainKeyword})">
+										<img ng-src="{{item.representationFeedItem.imageUrl}}" />
+									</a> -->
+									<a ng-click="vm.openDetail(item.representationFeedItem.id)">
+										<img ng-src="{{item.representationFeedItem.imageUrl}}" id="img-feed-{{item.representationFeedItem.id}}" />
+									</a>
+							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
+							    </md-grid-tile>
+						  	</md-grid-list>
+			        	</md-content>
+		      		</md-tab-body>
+		      	</md-tab>
+		      	<!-- Like -->
+		      	<md-tab>
+		      		<md-tab-label><span class="glyphicon glyphicon-heart"></span></md-tab-label>
+		      		<md-tab-body>
+		      			<md-content class="md-padding">
+			          		<md-grid-list
+						        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+						        md-row-height-gt-md="1:1" md-row-height="4:3"
+						        md-gutter="8px" md-gutter-gt-sm="4px" >
+						
+								<md-grid-tile class="yellow">
+									<md-button class="md-fab md-mini md-primary" aria-label="Use Android" ui-sref="trend.new">
+						          		<img width="30px" src="content/images/icon-planet-white.png" alt="logo"/>
+						        	</md-button>
+							      	<md-grid-tile-footer>
+							        	<h3 data-translate="blastApp.trend.start-a-trend-lbl">Start a trend</h3>
+							      	</md-grid-tile-footer>
+							    </md-grid-tile>
+							    
+							    <md-grid-tile ng-repeat="item in vm.itemTopKeywordFriendLike"
+							                  md-rowspan="1"
+							                  md-colspan="1"
+							                  md-colspan-sm="1"
+							                  md-colspan-xs="1"
+							                  ng-class="deepBlue" >
+							        <md-grid-tile-header>
+    									<div ng-repeat="user in item.keywordInfo.lstUserLike">
+											<img class="img-user-trend-block" ng-src="{{user.imageUrl}}" alt="{{user.displayName}}"/>
+										</div>
+  									</md-grid-tile-header>
+  									<a ui-sref="trend.detail({feedId:item.representationFeedItem.id, keywordName:item.name})">
+										<img ng-src="{{item.representationFeedItem.imageUrl}}" />
+									</a>
+							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
+							    </md-grid-tile>
+						  	</md-grid-list>
+			        	</md-content>
+			        	
+			        	<md-content class="md-padding">
+		      				<h1 class="md-display-2">Discovery</h1>
+		      				
+		      				<md-grid-list
+						        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+						        md-row-height-gt-md="1:1" md-row-height="4:3"
+						        md-gutter="8px" md-gutter-gt-sm="4px" >
+						        
+							    <md-grid-tile ng-repeat="item in vm.itemTopKeywordAllLike"
+							                  md-rowspan="1"
+							                  md-colspan="1"
+							                  md-colspan-sm="1"
+							                  md-colspan-xs="1"
+							                  ng-class="deepBlue" >
+									<md-grid-tile-header>
+    									<span class="glyphicon glyphicon-heart"></span> {{item.numberLike}}
+  									</md-grid-tile-header>
+									<a ng-click="vm.openDetail(item.representationFeedItem.id)">
+										<img ng-src="{{item.representationFeedItem.imageUrl}}"  id="img-feed-{{item.representationFeedItem.id}}" />
+									</a>
+							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
+							    </md-grid-tile>
+						  	</md-grid-list>
+			        	</md-content>
+		      		</md-tab-body>
+		      </md-tab>
+		</md-content>
+	</div>
+</div>

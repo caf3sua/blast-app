@@ -1,0 +1,23 @@
+{
+    "blastApp": {
+        "keywordUser" : {
+            "home": {
+                "title": "Keyword Users",
+                "createLabel": "Thêm mới một Keyword User",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Keyword User"
+            },
+            "created": "Một Keyword User mới được tạo với định danh {{ param }}",
+            "updated": "Một Keyword User cập nhật với định danh {{ param }}",
+            "deleted": "Một Keyword User đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Keyword User {{ id }}?"
+            },
+            "detail": {
+                "title": "Keyword User"
+            },
+            "keywordId": "Keyword Id",
+            "userId": "User Id",
+            "updatedDate": "Updated Date"
+        }
+    }
+}
