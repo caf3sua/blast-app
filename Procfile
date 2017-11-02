@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar -Dspring.profiles.active=dev target/blast-0.0.1-SNAPSHOT.war
