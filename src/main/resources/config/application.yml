@@ -31,6 +31,9 @@ spring:
     google:
         vision:
             api-key: AIzaSyDmENwPGJEsFK36kQ0M8Pi7gAkzqGcLDHk
+        storage:
+            project-id: blast-api
+            bucket-name: itsol-blast
     application:
         name: blast
     profiles:

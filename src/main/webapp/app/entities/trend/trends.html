@@ -37,7 +37,7 @@
     									<!-- <h3>UserA, UserB, UserC </h3> -->
   									</md-grid-tile-header>
   									<a ui-sref="trend.detail({feedId:item.representationFeedItem.id, keywordName:item.name})">
-										<img ng-src="{{item.representationFeedItem.imageUrl}}" />
+										<img ng-src="{{item.representationFeedItem.imageThumbUrl}}" />
 									</a>
 							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
 							    </md-grid-tile>
@@ -64,7 +64,7 @@
 										<img ng-src="{{item.representationFeedItem.imageUrl}}" />
 									</a> -->
 									<a ng-click="vm.openDetail(item.representationFeedItem.id)">
-										<img ng-src="{{item.representationFeedItem.imageUrl}}" id="img-feed-{{item.representationFeedItem.id}}" />
+										<img ng-src="{{item.representationFeedItem.imageThumbUrl}}" id="img-feed-{{item.representationFeedItem.id}}" />
 									</a>
 							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
 							    </md-grid-tile>
@@ -103,7 +103,7 @@
 										</div>
   									</md-grid-tile-header>
   									<a ui-sref="trend.detail({feedId:item.representationFeedItem.id, keywordName:item.name})">
-										<img ng-src="{{item.representationFeedItem.imageUrl}}" />
+										<img ng-src="{{item.representationFeedItem.imageThumbUrl}}" />
 									</a>
 							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
 							    </md-grid-tile>
@@ -128,7 +128,7 @@
     									<span class="glyphicon glyphicon-heart"></span> {{item.numberLike}}
   									</md-grid-tile-header>
 									<a ng-click="vm.openDetail(item.representationFeedItem.id)">
-										<img ng-src="{{item.representationFeedItem.imageUrl}}"  id="img-feed-{{item.representationFeedItem.id}}" />
+										<img ng-src="{{item.representationFeedItem.imageThumbUrl}}"  id="img-feed-{{item.representationFeedItem.id}}" />
 									</a>
 							      	<md-grid-tile-footer><h3>{{item.name}}</h3></md-grid-tile-footer>
 							    </md-grid-tile>

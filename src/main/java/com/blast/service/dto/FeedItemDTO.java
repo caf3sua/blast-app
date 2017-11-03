@@ -29,6 +29,8 @@ public class FeedItemDTO implements Serializable {
     
     private String filename;
     
+    private String thumbFilename;
+    
     private Long userId;
     
     private String mainKeyword;
@@ -166,5 +168,13 @@ public class FeedItemDTO implements Serializable {
 
 	public void setMainKeyword(String mainKeyword) {
 		this.mainKeyword = mainKeyword;
+	}
+
+	public String getThumbFilename() {
+		return thumbFilename;
+	}
+
+	public void setThumbFilename(String thumbFilename) {
+		this.thumbFilename = thumbFilename;
 	}
 }

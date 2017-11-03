@@ -1,17 +1,40 @@
 package com.blast.service.impl;
 
-import com.blast.service.FeedItemService;
-import com.blast.service.KeywordService;
-import com.blast.service.SocialFollowService;
-import com.blast.service.UserService;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import javax.imageio.ImageIO;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
+import org.imgscalr.Scalr;
+import org.imgscalr.Scalr.Mode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.blast.domain.FeedItem;
-import com.blast.domain.SocialUserConnection;
 import com.blast.domain.StatusItem;
 import com.blast.repository.FeedItemRepository;
 import com.blast.repository.SocialUserConnectionRepository;
 import com.blast.repository.StatusItemRepository;
+import com.blast.service.FeedItemService;
+import com.blast.service.KeywordService;
+import com.blast.service.SocialFollowService;
+import com.blast.service.UserService;
 import com.blast.service.dto.FeedItemDTO;
-import com.blast.service.dto.SocialFollowDTO;
 import com.blast.service.dto.UserDTO;
 import com.blast.service.mapper.FeedItemMapper;
 import com.blast.service.util.BlastConstant;
@@ -22,48 +45,10 @@ import com.google.cloud.storage.Acl.User;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
-import com.google.cloud.storage.Bucket;
-import com.google.cloud.storage.BucketInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
 import sun.misc.BASE64Decoder;
-
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import javax.imageio.ImageIO;
-import javax.persistence.Column;
-import javax.swing.ImageIcon;
-
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
-import org.imgscalr.Scalr;
-import org.imgscalr.Scalr.Mode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -83,23 +68,38 @@ public class FeedItemServiceImpl implements FeedItemService{
     
     private final KeywordService keywordService;
     
-    private final SocialFollowService socialFollowService;
-    
-    private final  SocialUserConnectionRepository socialUserConnectionRepository;
-
     private final FeedItemMapper feedItemMapper;
+    
+    private final Environment env;
+    
+    private String storageProjectId;
 
+    private String storageBucketName;
+
+    private Storage storage;
+    
     public FeedItemServiceImpl(FeedItemRepository feedItemRepository, FeedItemMapper feedItemMapper
     		, UserService userService, StatusItemRepository statusItemRepository, SocialFollowService socialFollowService
     		, SocialUserConnectionRepository socialUserConnectionRepository
-    		, KeywordService keywordService) {
+    		, KeywordService keywordService
+    		, Environment env) throws IOException {
         this.feedItemRepository = feedItemRepository;
         this.feedItemMapper = feedItemMapper;
         this.userService = userService;
         this.statusItemRepository = statusItemRepository;
-        this.socialFollowService = socialFollowService;
-        this.socialUserConnectionRepository = socialUserConnectionRepository;
         this.keywordService = keywordService;
+        this.env = env;
+        
+        this.storageProjectId = this.env.getProperty("spring.google.storage.project-id");
+        this.storageBucketName = this.env.getProperty("spring.google.storage.bucket-name");
+        
+		Resource resource = new ClassPathResource("config/blast-api.json");
+		
+		storage = StorageOptions.newBuilder()
+				.setProjectId(storageProjectId)
+			    .setCredentials(ServiceAccountCredentials.fromStream(resource.getInputStream()))
+			    .build()
+			    .getService();
     }
 
     /**
@@ -161,15 +161,11 @@ public class FeedItemServiceImpl implements FeedItemService{
 	public FeedItemDTO storeCloud(FeedItemDTO feedItemDTO) {
 		try {
 			com.blast.domain.User user = userService.getCurrentUser();
-			
+
 			// Upload
 			processUploadToCloud(feedItemDTO);
 			
-			// Check Image Url
-			boolean check = isExistImage("https://storage.googleapis.com/itsol-blast/1507452606597_thumb_UvHennT5FDTw73n");
-			System.out.println(check);
-			
-			if (!isExistImage(feedItemDTO.getImageThumbUrl()) || !isExistImage(feedItemDTO.getImageUrl())) {
+			if (!isExistImage(feedItemDTO.getFilename()) || !isExistImage(feedItemDTO.getThumbFilename())) {
 				log.error("Cannot upload image to cloud");
 				return null;
 			}
@@ -222,21 +218,13 @@ public class FeedItemServiceImpl implements FeedItemService{
 	}
     
     private void processUploadToCloud(FeedItemDTO feedItemDTO) throws IOException {
-    	Long currentTime = System.currentTimeMillis();
-    	Storage storage;
-		Resource resource = new ClassPathResource("config/blast-api.json");
-		
-		storage = StorageOptions.newBuilder()
-				.setProjectId("blast-api")
-			    .setCredentials(ServiceAccountCredentials.fromStream(resource.getInputStream()))
-			    .build()
-			    .getService();
+    		Long currentTime = System.currentTimeMillis();
 		
 		// Create a bucket
-		String bucketName = "itsol-blast";
-		
 		String filename = currentTime + "_" + feedItemDTO.getFilename();
-		BlobId blobId = BlobId.of(bucketName, filename);
+		String thumbFilename = currentTime + "_thumb_" + feedItemDTO.getFilename();
+		
+		BlobId blobId = BlobId.of(storageBucketName, filename);
 		
 		BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType(feedItemDTO.getContentType()).build();
 		
@@ -248,7 +236,7 @@ public class FeedItemServiceImpl implements FeedItemService{
 		String thumbData = null;
 		BufferedImage originBufImage = decodeToImage(feedItemDTO.getData());
 		
-		String imageUrl = "https://storage.googleapis.com/" + bucketName + "/" + filename;
+		String imageUrl = "https://storage.googleapis.com/" + storageBucketName + "/" + filename;
 		String imageThumbUrl = null; //"https://storage.googleapis.com/" + bucketName + "/" + thumbFilename;
 		// Check size image
 		if (originBufImage.getWidth() > BlastConstant.IMAGE_RESIZE_WIDTH 
@@ -259,58 +247,58 @@ public class FeedItemServiceImpl implements FeedItemService{
 			byte[] contentThumb = Base64.decodeBase64(thumbData);
 			
 			// Create thumb and upload
-			String thumbFilename = currentTime + "_thumb_" + feedItemDTO.getFilename();
-			BlobId blobIdThumb = BlobId.of(bucketName, thumbFilename);
+			BlobId blobIdThumb = BlobId.of(storageBucketName, thumbFilename);
 			
 			BlobInfo blobInfoThumb = BlobInfo.newBuilder(blobIdThumb).setContentType(feedItemDTO.getContentType()).build();
 			
 			storage.create(blobInfoThumb, contentThumb);
 			storage.createAcl(blobIdThumb, Acl.of(User.ofAllUsers(), Role.READER));
-			imageThumbUrl = "https://storage.googleapis.com/" + bucketName + "/" + thumbFilename;
+			imageThumbUrl = "https://storage.googleapis.com/" + storageBucketName + "/" + thumbFilename;
 		} else {
 			imageThumbUrl = imageUrl;
+			thumbFilename = filename;
 		}
+		
+		// set thumb filename
+		feedItemDTO.setFilename(filename);
+		feedItemDTO.setThumbFilename(thumbFilename);
 		
 		feedItemDTO.setImageUrl(imageUrl);
 		feedItemDTO.setImageThumbUrl(imageThumbUrl);
     }
     
     private String getFormatName(String contentType) {
-    	return contentType.replace("image/", "");
+    		return contentType.replace("image/", "");
     }
     
-    private Boolean isExistImage(String url){
+    private Boolean isExistImage(String name){
 
-    	try {
-	      HttpURLConnection.setFollowRedirects(false);
-	      // note : you may also need
-	      //        HttpURLConnection.setInstanceFollowRedirects(false)
-	      HttpURLConnection con =
-	         (HttpURLConnection) new URL(url).openConnection();
-	      con.setRequestMethod("HEAD");
-	      
-	      long lengthImage = con.getContentLengthLong();
-	      if (lengthImage == 0) {
-	    	  return false;
-	      }
-	      
-	      return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
-	    }
-	    catch (Exception e) {
+	    	try {
+	//	      HttpURLConnection.setFollowRedirects(false);
+	//	      // note : you may also need
+	//	      //        HttpURLConnection.setInstanceFollowRedirects(false)
+	//	      HttpURLConnection con =
+	//	         (HttpURLConnection) new URL(url).openConnection();
+	//	      con.setRequestMethod("HEAD");
+	//	      
+	//	      long lengthImage = con.getContentLengthLong();
+	//	      if (lengthImage == 0) {
+	//	    	  return false;
+	//	      }
+	//	      
+	//	      return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+	    		BlobId blobId = BlobId.of(storageBucketName, name);
+	    		Blob blob = storage.get(blobId);
+	    		if (null == blob) {
+	    			log.warn("Image file not exist, {}", name);
+	    			return false;
+	    		} 
+	    		
+	    		return true;
+		} catch (Exception e) {
 	       e.printStackTrace();
 	       return false;
 	    }
-//        try {  
-//            BufferedImage image = ImageIO.read(new URL(url));  
-//            if(image != null){  
-//                return true;
-//            } else{
-//                return false;
-//            }
-//        } catch (Exception e) {
-//        	e.printStackTrace();
-//            return false;
-//        }
     }
     
     public BufferedImage dropAlphaChannel(BufferedImage src) {
