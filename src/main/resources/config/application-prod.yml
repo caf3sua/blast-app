@@ -26,9 +26,9 @@ spring:
         #url: jdbc:postgresql://www1.itsol.vn:5432/blast
         #username: blast
         #password: 12345678
-        url: jdbc:postgresql://35.201.143.13:5432/blast
-        username: blast
-        password: 12345678
+        url: ${JDBC_DATABASE_URL}
+        username: ${JDBC_DATABASE_USERNAME}
+        password: ${JDBC_DATABASE_PASSWORD}
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
