@@ -65,19 +65,19 @@ public class SocialConfiguration implements SocialConfigurer {
     @Override
     public void addConnectionFactories(ConnectionFactoryConfigurer connectionFactoryConfigurer, Environment environment) {
         // Google configuration
-        String googleClientId = environment.getProperty("spring.social.google.client-id");
-        String googleClientSecret = environment.getProperty("spring.social.google.client-secret");
-        if (googleClientId != null && googleClientSecret != null) {
-            log.debug("Configuring GoogleConnectionFactory");
-            connectionFactoryConfigurer.addConnectionFactory(
-                new GoogleConnectionFactory(
-                    googleClientId,
-                    googleClientSecret
-                )
-            );
-        } else {
-            log.error("Cannot configure GoogleConnectionFactory id or secret null");
-        }
+//        String googleClientId = environment.getProperty("spring.social.google.client-id");
+//        String googleClientSecret = environment.getProperty("spring.social.google.client-secret");
+//        if (googleClientId != null && googleClientSecret != null) {
+//            log.debug("Configuring GoogleConnectionFactory");
+//            connectionFactoryConfigurer.addConnectionFactory(
+//                new GoogleConnectionFactory(
+//                    googleClientId,
+//                    googleClientSecret
+//                )
+//            );
+//        } else {
+//            log.error("Cannot configure GoogleConnectionFactory id or secret null");
+//        }
 
         // Facebook configuration
         String facebookClientId = environment.getProperty("spring.social.facebook.client-id");
@@ -95,19 +95,19 @@ public class SocialConfiguration implements SocialConfigurer {
         }
 
         // Twitter configuration
-        String twitterClientId = environment.getProperty("spring.social.twitter.client-id");
-        String twitterClientSecret = environment.getProperty("spring.social.twitter.client-secret");
-        if (twitterClientId != null && twitterClientSecret != null) {
-            log.debug("Configuring TwitterConnectionFactory");
-            connectionFactoryConfigurer.addConnectionFactory(
-                new TwitterConnectionFactory(
-                    twitterClientId,
-                    twitterClientSecret
-                )
-            );
-        } else {
-            log.error("Cannot configure TwitterConnectionFactory id or secret null");
-        }
+//        String twitterClientId = environment.getProperty("spring.social.twitter.client-id");
+//        String twitterClientSecret = environment.getProperty("spring.social.twitter.client-secret");
+//        if (twitterClientId != null && twitterClientSecret != null) {
+//            log.debug("Configuring TwitterConnectionFactory");
+//            connectionFactoryConfigurer.addConnectionFactory(
+//                new TwitterConnectionFactory(
+//                    twitterClientId,
+//                    twitterClientSecret
+//                )
+//            );
+//        } else {
+//            log.error("Cannot configure TwitterConnectionFactory id or secret null");
+//        }
 
         // jhipster-needle-add-social-connection-factory
     }
