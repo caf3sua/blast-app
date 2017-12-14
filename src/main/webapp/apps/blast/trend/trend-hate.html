@@ -1,0 +1,96 @@
+ <div class="item">
+    <div class="item-bg">
+      <img src="{{vm.account.imageUrl}}" class="blur opacity-3">
+    </div>
+    <div class="p-a-md">
+      <div class="row m-t">
+        <div class="col-sm-3">
+        		<div class="center">
+        		<div class="row">
+        			<div class="col-md-12 text-center">
+        				<span class="avatar w-96 text-center">
+		              <img src="{{vm.account.imageUrl}}">
+		            </span>
+        			</div>
+        		</div>
+        		<div class="row">
+        			<div class="col-md-12 text-center">
+        				<div class="p-a">
+						<a href class="btn btn-sm primary btn-rounded" ui-sref="app.trend-new">Start a trend</a>
+					</div>
+        			</div>
+     		</div>
+        		</div>
+        </div>
+        <div class="col-sm-9">
+          	<div class="row">
+		      	<div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="item in vm.itemTopKeywordFriendHate track by $index">
+		    			<div class="box">
+						<div class="item">
+							<div class="item-overlay active p-a">
+								<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
+							</div>
+							<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-banner">
+						</div>
+						<div class="p-a">
+							<a href ng-repeat="user in item.keywordInfo.lstUserHate"><img src="{{user.imageUrl}}" class="w-32 rounded" alt="{{user.displayName}}"></a>
+							<a class="btn btn-sm danger rounded"><i class="fa fa-plus"></i> 3</a>
+						</div>
+					</div>
+		    		</div>
+		  	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dker p-x">
+    <div class="row">
+      <div class="col-sm-6 push-sm-6">
+      </div>
+      <div class="col-sm-6 pull-sm-6">
+        <div class="p-y-md clearfix nav-active-{{app.setting.theme.primary}}">
+          <ul class="nav nav-pills nav-sm">
+            <li class="nav-item active">
+              <a class="nav-link" href>Discovery</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="padding">
+    <div class="row">
+      	<div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="item in vm.itemTopKeywordAllHate track by $index">
+    			<div class="box">
+				<div class="item">
+					<div class="item-overlay active p-a">
+						<!-- <a class="pull-right text-white _800">$ 4.99</a> -->
+						<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
+					</div>
+					<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-discovery">
+				</div>
+				<div class="p-a">
+					<div class="text-muted m-b-xs">
+						<a href class="m-r"><i class="fa fa-times"></i> {{item.numberHate}}</a>
+						<a href><i class="fa fa-bookmark-o"></i> 20</a>
+					</div>
+					<div class="m-b h-2x"><a href class="_800">{{item.representationFeedItem.keywords}}</a></div>
+					<!-- <div class="m-b h-3x">
+						<div class="m-b-sm">Liked:</div>
+						<a href><img src="content/assets/images/a0.jpg" class="w-32 rounded"></a>
+						<a href><img src="content/assets/images/a1.jpg" class="w-32 rounded"></a>
+						<a href><img src="content/assets/images/a2.jpg" class="w-32 rounded"></a>
+						<a href><img src="content/assets/images/a3.jpg" class="w-32 rounded"></a>
+						<a class="btn btn-sm danger rounded"><i class="fa fa-plus"></i> 99</a>
+					</div> -->
+				</div>
+			</div>
+    		</div>
+  	</div>
+  	<div class="row">
+  		<div class="btn-group m-r">
+          	<a href class="btn btn-xs white">Load More</a>
+        </div>
+  	</div>
+  </div>  

@@ -34,7 +34,8 @@
         "angular-material": "latest",
         "ng-file-model" :  "latest",
         "ng-facebook" :  "latest",
-        "ng-facebook-api" :  "latest"
+        "ng-facebook-api" :  "latest",
+        "ngtoast" :  "latest"
     },
     "devDependencies": {
         "angular-mocks": "1.5.8"

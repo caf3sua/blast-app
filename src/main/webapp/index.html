@@ -1,46 +1,43 @@
-<!doctype html>
-<html class="no-js">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>blast</title>
-    <meta name="description" content="">
-    <meta name="google" value="notranslate">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css content/css/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
-    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
-    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css">
-    
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-    <!-- endinject -->
-    <!-- endbuild -->
-    <!-- build:css content/css/main.css -->
-    <link rel="stylesheet" href="content/css/main.css">
-    <link rel="stylesheet" href="content/css/blast.css">
-    <!-- endbuild -->
-    <link rel="shortcut icon" href="favicon.ico" />
+  <meta charset="utf-8" />
+  <title>ITSOL - AngularJS Version | New website</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="content/assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="content/assets/images/logo.png">
+
+  <!-- style -->
+  <link rel="stylesheet" href="content/assets/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="content/assets/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="content/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="content/assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="content/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css ../assets/styles/app.min.css -->
+  <link rel="stylesheet" href="content/assets/styles/app.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="content/assets/styles/font.css" type="text/css" />
+  
+  <!-- Custom main css -->
+  <link rel="stylesheet" href="content/assets/styles/main.css" type="text/css" />
 </head>
-<body ng-app="blastApp" ng-strict-di class="blast-bg" id="blast-body-id">
-    <!--[if lt IE 9]>
+<body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
+  	<!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <!-- <page-ribbon></page-ribbon> -->
-    <div ui-view="navbar" ng-cloak ></div>
-    <div class="container">
-        <div ui-view="content">
-            <!-- Angular views -->
-        </div>
-
-        <!-- <div class="footer" ng-cloak>
-            <p data-translate="footer">This is your footer</p>
-        </div> -->
-    </div>
-
-    <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+  	<div class="app" ui-view></div>
+  
+	<!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
         function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -49,185 +46,160 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
+    
+<!-- build:js scripts/app.angular.js -->
+<!-- jQuery -->
+  <script src="libs/jquery/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
+  <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="libs/jquery/PACE/pace.min.js"></script>
+<!-- Angular -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="libs/angular/angular-animate/angular-animate.js"></script>
+  <script src="libs/angular/angular-resource/angular-resource.js"></script>
+  <script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>
+  <script src="libs/angular/angular-touch/angular-touch.js"></script>
 
-    <!-- build:js app/vendor.js -->
+  <!-- router -->
+  <script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- storage -->
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
+  <!-- utils -->
+  <script src="libs/angular/angular-ui-utils/ui-utils.js"></script>
+  <!-- lazyload -->
+  <script src="libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
+
+	<!-- build:js app/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- Core lib -->
     <script src="bower_components/messageformat/messageformat.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/arrive/src/arrive.js"></script>
-    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
-    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
     <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
     <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
-    <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
-    <script src="bower_components/ng-file-model/ng-file-model.min.js"></script>
-    <script src="bower_components/ng-facebook-api/dist/ng-facebook-api.js"></script>
-    <!-- Angular Material Library -->
-  	<script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highstock.src.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-more.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
+    
+<!-- App -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/config.router.js"></script>
+  <script src="scripts/app.ctrl.js"></script>
 
-    <!-- build:js app/app.js  -->
-    <!-- inject:js -->
-    <script src="app/app.module.js"></script>
-    <script src="app/services/user/user.service.js"></script>
-    <script src="app/services/profiles/profile.service.js"></script>
-    <script src="app/services/profiles/page-ribbon.directive.js"></script>
-    <script src="app/services/auth/register.service.js"></script>
-    <script src="app/services/auth/principal.service.js"></script>
-    <script src="app/services/auth/password-reset-init.service.js"></script>
-    <script src="app/services/auth/password-reset-finish.service.js"></script>
-    <script src="app/services/auth/password.service.js"></script>
-    <script src="app/services/auth/has-authority.directive.js"></script>
-    <script src="app/services/auth/has-any-authority.directive.js"></script>
-    <script src="app/services/auth/auth.service.js"></script>
-    <script src="app/services/auth/auth.jwt.service.js"></script>
-    <script src="app/services/auth/activate.service.js"></script>
-    <script src="app/services/auth/account.service.js"></script>
-    <script src="app/layouts/navbar/navbar.controller.js"></script>
-    <script src="app/layouts/navbar/active-menu.directive.js"></script>
-    <script src="app/layouts/error/error.state.js"></script>
-    <script src="app/home/home.state.js"></script>
-    <script src="app/home/home.controller.js"></script>
-    <script src="app/entities/trend/trend-detail-keyword-dialog.controller.js"></script>
-    <script src="app/entities/trend/trend-dialog.controller.js"></script>
-    <script src="app/entities/trend/trend-detail.controller.js"></script>
-    <script src="app/entities/trend/trend-delete-dialog.controller.js"></script>
-    <script src="app/entities/trend/trend.state.js"></script>
-    <script src="app/entities/trend/trend.service.js"></script>
-    <script src="app/entities/trend/trend.controller.js"></script>
-    <script src="app/entities/status-item/status-item-dialog.controller.js"></script>
-    <script src="app/entities/status-item/status-item-detail.controller.js"></script>
-    <script src="app/entities/status-item/status-item-delete-dialog.controller.js"></script>
-    <script src="app/entities/status-item/status-item.state.js"></script>
-    <script src="app/entities/status-item/status-item.service.js"></script>
-    <script src="app/entities/status-item/status-item.controller.js"></script>
-    <script src="app/entities/social-follow/social-follow-dialog.controller.js"></script>
-    <script src="app/entities/social-follow/social-follow-detail.controller.js"></script>
-    <script src="app/entities/social-follow/social-follow-delete-dialog.controller.js"></script>
-    <script src="app/entities/social-follow/social-follow.state.js"></script>
-    <script src="app/entities/social-follow/social-follow.service.js"></script>
-    <script src="app/entities/social-follow/social-follow.controller.js"></script>
-    <script src="app/entities/keyword/keyword-dialog.controller.js"></script>
-    <script src="app/entities/keyword/keyword-detail.controller.js"></script>
-    <script src="app/entities/keyword/keyword-delete-dialog.controller.js"></script>
-    <script src="app/entities/keyword/keyword.state.js"></script>
-    <script src="app/entities/keyword/keyword.service.js"></script>
-    <script src="app/entities/keyword/keyword.controller.js"></script>
-    <script src="app/entities/feed-item/feed-item-dialog.controller.js"></script>
-    <script src="app/entities/feed-item/feed-item-detail.controller.js"></script>
-    <script src="app/entities/feed-item/feed-item-delete-dialog.controller.js"></script>
-    <script src="app/entities/feed-item/feed-item.state.js"></script>
-    <script src="app/entities/feed-item/feed-item.service.js"></script>
-    <script src="app/entities/feed-item/feed-item-detail-dialog.service.js"></script>
-    <script src="app/entities/feed-item/feed-item.controller.js"></script>
-    <script src="app/entities/entity.state.js"></script>
-    <script src="app/components/util/truncate-words.filter.js"></script>
-    <script src="app/components/util/truncate-characters.filter.js"></script>
-    <script src="app/components/util/sort-by.directive.js"></script>
-    <script src="app/components/util/sort.directive.js"></script>
-    <script src="app/components/util/parse-links.service.js"></script>
-    <script src="app/components/util/pagination-util.service.js"></script>
-    <script src="app/components/util/jhi-item-count.directive.js"></script>
-    <script src="app/components/util/date-util.service.js"></script>
-    <script src="app/components/util/data-util.service.js"></script>
-    <script src="app/components/util/capitalize.filter.js"></script>
-    <script src="app/components/util/base64.service.js"></script>
-    <script src="app/components/login/login.service.js"></script>
-    <script src="app/components/login/login.controller.js"></script>
-    <script src="app/components/language/language.service.js"></script>
-    <script src="app/components/language/language.filter.js"></script>
-    <script src="app/components/language/language.controller.js"></script>
-    <script src="app/components/language/language.constants.js"></script>
-    <script src="app/components/form/show-validation.directive.js"></script>
-    <script src="app/components/form/pagination.constants.js"></script>
-    <script src="app/components/form/minbytes.directive.js"></script>
-    <script src="app/components/form/maxbytes.directive.js"></script>
-    <script src="app/components/alert/alert-error.directive.js"></script>
-    <script src="app/components/alert/alert.service.js"></script>
-    <script src="app/components/alert/alert.directive.js"></script>
-    <script src="app/blocks/interceptor/notification.interceptor.js"></script>
-    <script src="app/blocks/interceptor/errorhandler.interceptor.js"></script>
-    <script src="app/blocks/interceptor/auth-expired.interceptor.js"></script>
-    <script src="app/blocks/interceptor/auth.interceptor.js"></script>
-    <script src="app/blocks/handlers/translation.handler.js"></script>
-    <script src="app/blocks/handlers/state.handler.js"></script>
-    <script src="app/blocks/config/uib-pagination.config.js"></script>
-    <script src="app/blocks/config/uib-pager.config.js"></script>
-    <script src="app/blocks/config/translation-storage.provider.js"></script>
-    <script src="app/blocks/config/translation.config.js"></script>
-    <script src="app/blocks/config/localstorage.config.js"></script>
-    <script src="app/blocks/config/http.config.js"></script>
-    <script src="app/blocks/config/compile.config.js"></script>
-    <script src="app/blocks/config/bootstrap-material.config.js"></script>
-    <script src="app/blocks/config/alert.config.js"></script>
-    <script src="app/app.state.js"></script>
-    <script src="app/app.constants.js"></script>
-    <script src="app/admin/user-management/user-management-dialog.controller.js"></script>
-    <script src="app/admin/user-management/user-management-detail.controller.js"></script>
-    <script src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
-    <script src="app/admin/user-management/user-management.state.js"></script>
-    <script src="app/admin/user-management/user-management.controller.js"></script>
-    <script src="app/admin/metrics/metrics.state.js"></script>
-    <script src="app/admin/metrics/metrics.service.js"></script>
-    <script src="app/admin/metrics/metrics.modal.controller.js"></script>
-    <script src="app/admin/metrics/metrics.controller.js"></script>
-    <script src="app/admin/logs/logs.state.js"></script>
-    <script src="app/admin/logs/logs.service.js"></script>
-    <script src="app/admin/logs/logs.controller.js"></script>
-    <script src="app/admin/health/health.state.js"></script>
-    <script src="app/admin/health/health.service.js"></script>
-    <script src="app/admin/health/health.modal.controller.js"></script>
-    <script src="app/admin/health/health.controller.js"></script>
-    <script src="app/admin/docs/docs.state.js"></script>
-    <script src="app/admin/configuration/configuration.state.js"></script>
-    <script src="app/admin/configuration/configuration.service.js"></script>
-    <script src="app/admin/configuration/configuration.controller.js"></script>
-    <script src="app/admin/audits/audits.state.js"></script>
-    <script src="app/admin/audits/audits.service.js"></script>
-    <script src="app/admin/audits/audits.controller.js"></script>
-    <script src="app/admin/admin.state.js"></script>
-    <script src="app/account/social/social-register.controller.js"></script>
-    <script src="app/account/social/social-auth.controller.js"></script>
-    <script src="app/account/social/social.state.js"></script>
-    <script src="app/account/social/social.service.js"></script>
-    <script src="app/account/social/directive/social.directive.js"></script>
-    <script src="app/account/settings/settings.state.js"></script>
-    <script src="app/account/settings/settings.controller.js"></script>
-    <script src="app/account/reset/request/reset.request.state.js"></script>
-    <script src="app/account/reset/request/reset.request.controller.js"></script>
-    <script src="app/account/reset/finish/reset.finish.state.js"></script>
-    <script src="app/account/reset/finish/reset.finish.controller.js"></script>
-    <script src="app/account/register/register.state.js"></script>
-    <script src="app/account/register/register.controller.js"></script>
-    <script src="app/account/password/password-strength-bar.directive.js"></script>
-    <script src="app/account/password/password.state.js"></script>
-    <script src="app/account/password/password.controller.js"></script>
-    <script src="app/account/activate/activate.state.js"></script>
-    <script src="app/account/activate/activate.controller.js"></script>
-    <script src="app/account/account.state.js"></script>
-    <script src="app/account/signin/signin.state.js"></script>
-    <script src="app/account/signin/signin.controller.js"></script>
-    <!-- endinject -->
-    <!-- endbuild -->
+  <script src="scripts/directives/ui-jp.js"></script>
+  <script src="scripts/directives/ui-nav.js"></script>
+  <script src="scripts/directives/ui-fullscreen.js"></script>
+  <script src="scripts/directives/ui-scroll-to.js"></script>
+  <script src="scripts/directives/ui-toggle-class.js"></script>
+  <script src="scripts/directives/ui-include.js"></script>
+  <script src="scripts/directives/its-common.js"></script>
+  
+  <script src="scripts/filters/fromnow.js"></script>
 
+  <script src="scripts/services/ngstore.js"></script>
+  <script src="scripts/services/ui-load.js"></script>
+  <script src="scripts/services/palette.js"></script>
+  
+  <script src="scripts/services/user/user.service.js"></script>
+  <script src="scripts/services/profiles/profile.service.js"></script>
+  <script src="scripts/services/profiles/page-ribbon.directive.js"></script>
+  <script src="scripts/services/auth/register.service.js"></script>
+  <script src="scripts/services/auth/principal.service.js"></script>
+  <script src="scripts/services/auth/password-reset-init.service.js"></script>
+  <script src="scripts/services/auth/password-reset-finish.service.js"></script>
+  <script src="scripts/services/auth/password.service.js"></script>
+  <script src="scripts/services/auth/has-authority.directive.js"></script>
+  <script src="scripts/services/auth/has-any-authority.directive.js"></script>
+  <script src="scripts/services/auth/auth.service.js"></script>
+  <script src="scripts/services/auth/auth.jwt.service.js"></script>
+  <script src="scripts/services/auth/activate.service.js"></script>
+  <script src="scripts/services/auth/account.service.js"></script>
+<!-- endbuild -->
+
+	<!-- Component -->
+    <script src="scripts/components/language/language.service.js"></script>
+    <script src="scripts/components/language/language.filter.js"></script>
+    <script src="scripts/components/language/language.controller.js"></script>
+    <script src="scripts/components/language/language.constants.js"></script>
+    <script src="scripts/components/util/truncate-words.filter.js"></script>
+    <script src="scripts/components/util/truncate-characters.filter.js"></script>
+    <script src="scripts/components/util/sort-by.directive.js"></script>
+    <script src="scripts/components/util/sort.directive.js"></script>
+    <script src="scripts/components/util/parse-links.service.js"></script>
+    <script src="scripts/components/util/pagination-util.service.js"></script>
+    <script src="scripts/components/util/jhi-item-count.directive.js"></script>
+    <script src="scripts/components/util/date-util.service.js"></script>
+    <script src="scripts/components/util/data-util.service.js"></script>
+    <script src="scripts/components/util/capitalize.filter.js"></script>
+    <script src="scripts/components/util/base64.service.js"></script>
+    <script src="scripts/components/form/show-validation.directive.js"></script>
+    <script src="scripts/components/form/pagination.constants.js"></script>
+    <script src="scripts/components/form/minbytes.directive.js"></script>
+    <script src="scripts/components/form/maxbytes.directive.js"></script>
+    
+	<!-- Config and intercepter -->
+    <script src="scripts/blocks/interceptor/errorhandler.interceptor.js"></script>
+    <script src="scripts/blocks/interceptor/auth-expired.interceptor.js"></script>
+    <script src="scripts/blocks/interceptor/auth.interceptor.js"></script>
+    <script src="scripts/blocks/interceptor/resource-path.interceptor.js"></script>
+    <script src="scripts/blocks/handlers/translation.handler.js"></script>
+    <script src="scripts/blocks/handlers/state.handler.js"></script>
+    
+    <script src="scripts/blocks/config/compile.config.js"></script>
+    <script src="scripts/blocks/config/translation-storage.provider.js"></script>
+    <script src="scripts/blocks/config/translation.config.js"></script>
+	<script src="scripts/blocks/config/http.config.js"></script>
+
+	<script src="scripts/blocks/config/localstorage.config.js"></script>
+    
+	<!-- Configuration state router -->
+	<script src="apps/home/home.state.js"></script>
+	<script src="apps/access/access.state.js"></script>
+	
+	<!-- <script src="apps/admin/user-management/user-management-dialog.controller.js"></script>
+    <script src="apps/admin/user-management/user-management-detail.controller.js"></script>
+    <script src="apps/admin/user-management/user-management-delete-dialog.controller.js"></script>
+    <script src="apps/admin/user-management/user-management.state.js"></script>
+    <script src="apps/admin/user-management/user-management.controller.js"></script>
+    <script src="apps/admin/metrics/metrics.state.js"></script>
+    <script src="apps/admin/metrics/metrics.service.js"></script>
+    <script src="apps/admin/metrics/metrics.modal.controller.js"></script>
+    <script src="apps/admin/metrics/metrics.controller.js"></script>
+    <script src="apps/admin/logs/logs.state.js"></script>
+    <script src="apps/admin/logs/logs.service.js"></script>
+    <script src="apps/admin/logs/logs.controller.js"></script>
+    <script src="apps/admin/health/health.state.js"></script>
+    <script src="apps/admin/health/health.service.js"></script>
+    <script src="apps/admin/health/health.modal.controller.js"></script>
+    <script src="apps/admin/health/health.controller.js"></script> -->
+    <script src="apps/admin/docs/docs.state.js"></script>
+    <!-- <script src="apps/admin/configuration/configuration.state.js"></script>
+    <script src="apps/admin/configuration/configuration.service.js"></script>
+    <script src="apps/admin/configuration/configuration.controller.js"></script>
+    <script src="apps/admin/audits/audits.state.js"></script>
+    <script src="apps/admin/audits/audits.service.js"></script>
+    <script src="apps/admin/audits/audits.controller.js"></script> -->
+    <script src="apps/admin/admin.state.js"></script>
+	
+	<!-- Blast  -->
+	<!-- <script src="apps/blast/trend/trend-common.state.js"></script> -->
+	<script src="apps/blast/trend/trend-love.state.js"></script>
+	<script src="apps/blast/trend/trend-hate.state.js"></script>
+	<script src="apps/blast/trend/trend-new.state.js"></script>
 </body>
 </html>

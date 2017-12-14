@@ -1,0 +1,16 @@
+<!-- Language dropdown -->
+<div class="dropdown-menu pull-right w-64 animated fadeInUp no-bg no-border no-shadow">
+	<div class="scrollable" style="max-height: 220px">
+		<ul class="list-group list-group-gap m-a-0">
+			<li class="list-group-item dark-white text-color box-shadow-z0 b" ng-repeat="language in languageVm.languages">
+          		<span class="pull-left m-r">
+            			<img src="content/assets/images/flag/flag_{{language}}.svg" alt="..." class="w-24 img-circle">
+          		</span>
+          		<span class="clear block">
+            			<a href class="text-primary" ng-click="languageVm.changeLanguage(language)">{{language | findLanguageFromKey}}</a>
+          		</span>
+        		</li>
+		</ul>
+	</div>
+</div>
+<!-- / Language dropdown -->

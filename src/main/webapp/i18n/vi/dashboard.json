@@ -1,0 +1,8 @@
+{
+    "dashboard": {
+    		"title": "Dashboard",
+    		"label" : {
+			"hello" : "Chào {{username}} đã quay trở lại"    		
+    		}
+    }
+}
