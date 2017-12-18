@@ -234,6 +234,13 @@
             	  	  , 'bower_components/ngtoast/dist/ngToast-animations.css'
               ]
           },
+          {
+              name: 'ng-facebook',
+              module: true,
+              files: [
+                  'bower_components/ng-facebook/ngFacebook.js'
+              ]
+          },
         ]
       )
       .config(['$ocLazyLoadProvider', 'MODULE_CONFIG', function($ocLazyLoadProvider, MODULE_CONFIG) {

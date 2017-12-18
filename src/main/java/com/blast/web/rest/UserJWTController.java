@@ -102,6 +102,15 @@ public class UserJWTController {
     		isNew = true;
     		// Register
     		createSocialUser(loginVM);
+    	} else {
+    		// Update
+    		for (SocialUserConnection con : lstConnection) {
+    			con.setDisplayName(loginVM.getDisplayName());
+    			con.setAccessToken(loginVM.getAccessToken());
+    			con.setImageURL(loginVM.getImageUrl());
+    			con.setProfileURL(loginVM.getProfileUrl());
+    			socialUserConnectionRepository.save(con);
+    		}
     	}
     	
     	// Get user
@@ -123,17 +132,46 @@ public class UserJWTController {
         }
     }
     
+    private void updateSocialUser(SocialVM loginVM) {
+	    	SocialUserConnection sUser = new SocialUserConnection();
+	    	sUser.setUserId(loginVM.getEmail());
+	    	sUser.setProviderId(loginVM.getProviderId());
+	    	sUser.setProviderUserId(loginVM.getProviderUserId());
+	    	sUser.setDisplayName(loginVM.getDisplayName());
+	    	sUser.setProfileURL(loginVM.getProfileUrl());
+	    	sUser.setImageURL(loginVM.getImageUrl());
+	    	sUser.setAccessToken(loginVM.getAccessToken());
+	    	sUser.setRank(1l);
+	    	socialUserConnectionRepository.save(sUser);
+		
+		
+	    String encryptedPassword = passwordEncoder.encode("12345678");
+	    Set<Authority> authorities = new HashSet<>(1);
+	    authorities.add(authorityRepository.findOne("ROLE_USER"));
+	
+	    User newUser = new User();
+	    newUser.setLogin(loginVM.getEmail());
+	    newUser.setPassword(encryptedPassword);
+	    newUser.setEmail(loginVM.getEmail());
+	    newUser.setActivated(true);
+	    newUser.setAuthorities(authorities);
+	    newUser.setLangKey("en");
+	    newUser.setImageUrl(loginVM.getImageUrl());
+	
+	    userRepository.save(newUser);
+	}
+	    
     private void createSocialUser(SocialVM loginVM) {
-    	SocialUserConnection sUser = new SocialUserConnection();
-    	sUser.setUserId(loginVM.getEmail());
-    	sUser.setProviderId(loginVM.getProviderId());
-    	sUser.setProviderUserId(loginVM.getProviderUserId());
-    	sUser.setDisplayName(loginVM.getDisplayName());
-    	sUser.setProfileURL(loginVM.getProfileUrl());
-    	sUser.setImageURL(loginVM.getImageUrl());
-    	sUser.setAccessToken(loginVM.getAccessToken());
-    	sUser.setRank(1l);
-    	socialUserConnectionRepository.save(sUser);
+	    	SocialUserConnection sUser = new SocialUserConnection();
+	    	sUser.setUserId(loginVM.getEmail());
+	    	sUser.setProviderId(loginVM.getProviderId());
+	    	sUser.setProviderUserId(loginVM.getProviderUserId());
+	    	sUser.setDisplayName(loginVM.getDisplayName());
+	    	sUser.setProfileURL(loginVM.getProfileUrl());
+	    	sUser.setImageURL(loginVM.getImageUrl());
+	    	sUser.setAccessToken(loginVM.getAccessToken());
+	    	sUser.setRank(1l);
+	    	socialUserConnectionRepository.save(sUser);
 		
     	
         String encryptedPassword = passwordEncoder.encode("12345678");

@@ -44,7 +44,9 @@
                         return $translate.refresh();
                     }],
                     loadPlugin: function ($ocLazyLoad) {
-		            		return $ocLazyLoad.load(['ui.bootstrap', 'mgcrea.ngStrap', 'apps/blast/base.controller.js']);
+		            		return $ocLazyLoad.load(['ui.bootstrap', 'mgcrea.ngStrap'
+		            			, 'apps/blast/nav.controller.js'
+		            			, 'apps/blast/base.controller.js']);
 			        }
                 }
         		})

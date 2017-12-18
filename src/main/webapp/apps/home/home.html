@@ -8,7 +8,7 @@
         <div class="col-sm-7">
           <a href class="pull-left m-r-md">
             <span class="avatar w-96">
-              <img src="{{vm.account.imageUrl}}">
+              <img src="{{vm.account.imageUrl + '?width=150&height=150'}}">
               <i class="on b-white"></i>
             </span>
           </a>
@@ -85,13 +85,13 @@
       <div class="col-sm-8 col-lg-9">
         <div class="tab-content">      
           <div class="tab-pane p-v-sm active" id="tab_1">
-            		<div ui-include="'../apps/home/widget.gallery.html'"></div>
+            		<div ui-include="'../apps/home/widget.user-post.html'"></div>
           </div>
           <div class="tab-pane p-v-sm" id="tab_2">
-          		<div ui-include="'../apps/home/widget.gallery.html'"></div>
+          		<div ui-include="'../apps/home/widget.user-like.html'"></div>
           </div>
           <div class="tab-pane p-v-sm" id="tab_3">
-              	<div ui-include="'../apps/home/widget.gallery.html'"></div>
+              	<div ui-include="'../apps/home/widget.user-hate.html'"></div>
           </div>
           <div class="tab-pane p-v-sm" id="tab_4">
 				<div ui-include="'../apps/home/widget.friend.html'"></div>

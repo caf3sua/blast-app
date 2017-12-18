@@ -30,14 +30,14 @@
         </a>
         <div ui-include="'../views/theme/blocks/dropdown.language.html'"></div>
       </li>
-	 <li class="nav-item dropdown">
+	 <li class="nav-item dropdown" ng-controller="NavController as navVm">
         <a class="nav-link clear" href data-toggle="dropdown">
           <span class="avatar w-32">
-            <img src="content/assets/images/a0.jpg" alt="...">
+            <img src="{{navVm.account.imageUrl}}" alt="...">
             <i class="on b-white bottom"></i>
           </span>
         </a>
-        <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+        <div ui-include="'../views/theme/blocks/dropdown.user.html'"></div>
       </li>
       <li class="nav-item hidden-md-up">
         <a class="nav-link" data-toggle="collapse" data-target="#collapse">

@@ -1,0 +1,18 @@
+<div class="row">
+     <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="item in vm.itemUserPost">
+       <div class="box p-a-xs">
+         <a href="#"><img src="{{item.imageThumbUrl}}" alt="" class="img-gallery-profile"></a>
+         <div class="p-a-sm">
+           <div class="text-ellipsis">{{item.mainKeyword}}</div>
+         </div>
+       </div>
+     </div>
+</div>
+
+   <div>
+     <div class="btn-group m-r">
+       <button type="button" class="btn btn-sm white"><i class="fa fa-chevron-left"></i></button>
+       <button type="button" class="btn btn-sm white"><i class="fa fa-chevron-right"></i></button>
+     </div>
+     Showing <strong>{{vm.itemUserPost.length}}</strong> of {{vm.itemUserPost.length}}
+   </div>

@@ -1,6 +1,50 @@
- <div ui-include="'../apps/blast/trend/widget.start-trending.html'"></div>
+ <div class="item min-h-270">
+    <div class="item-bg">
+      <img src="{{vm.account.imageUrl}}" class="blur opacity-3">
+    </div>
+    <div class="p-a-md">
+      <div class="row m-t">
+        <div class="col-sm-3">
+        		<div class="center">
+        		<div class="row">
+        			<div class="col-md-12 text-center">
+        				<span class="avatar w-96 text-center">
+		              <img src="content/assets/images/logo.png">
+		            </span>
+        			</div>
+        		</div>
+        		<div class="row">
+        			<div class="col-md-12 text-center">
+        				<div class="p-a">
+						<a href class="btn btn-sm primary btn-rounded" ui-sref="app.trend-new">Start a trend</a>
+					</div>
+        			</div>
+     		</div>
+        		</div>
+        </div>
+        <div class="col-sm-9">
+          	<div class="row">
+		      	<div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="item in vm.itemTopKeywordFriendLike track by $index">
+		    			<div class="box">
+						<div class="item">
+							<div class="item-overlay active p-a">
+								<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
+							</div>
+							<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-banner">
+						</div>
+						<div class="p-a">
+							<a href ng-repeat="user in item.keywordInfo.lstUserLike"><img src="{{user.imageUrl}}" class="w-32 rounded" alt="{{user.displayName}}"></a>
+							<a class="btn btn-sm danger rounded"><i class="fa fa-plus"></i> 3</a>
+						</div>
+					</div>
+		    		</div>
+		  	</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="dker p-x">
+  <div class="dker p-x" ng-cloak>
     <div class="row">
       <div class="col-sm-6 push-sm-6">
       </div>
@@ -15,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="padding">
+  <div class="padding" ng-cloak>
     <div class="row">
       	<div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="item in vm.itemTopKeywordAllLike track by $index">
     			<div class="box">
@@ -32,14 +76,6 @@
 						<a href><i class="fa fa-bookmark-o"></i> 20</a>
 					</div>
 					<div class="m-b h-2x"><a href class="_800">{{item.representationFeedItem.keywords}}</a></div>
-					<!-- <div class="m-b h-3x">
-						<div class="m-b-sm">Liked:</div>
-						<a href><img src="content/assets/images/a0.jpg" class="w-32 rounded"></a>
-						<a href><img src="content/assets/images/a1.jpg" class="w-32 rounded"></a>
-						<a href><img src="content/assets/images/a2.jpg" class="w-32 rounded"></a>
-						<a href><img src="content/assets/images/a3.jpg" class="w-32 rounded"></a>
-						<a class="btn btn-sm danger rounded"><i class="fa fa-plus"></i> 99</a>
-					</div> -->
 				</div>
 			</div>
     		</div>

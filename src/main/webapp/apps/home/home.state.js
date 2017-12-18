@@ -21,7 +21,11 @@
         				return $translate.refresh();
             		}],
             		loadPlugin: function ($ocLazyLoad) {
-	            		return $ocLazyLoad.load(['apps/home/home.service.js', 'apps/home/home.controller.js']);
+	            		return $ocLazyLoad.load(['apps/home/home.service.js'
+	            			, 'apps/blast/feed-item.service.js'
+	            			, 'apps/blast/keyword.service.js'
+	            			, 'apps/blast/social-follow.service.js'
+	            			, 'apps/home/home.controller.js']);
 		        }
             }
         });

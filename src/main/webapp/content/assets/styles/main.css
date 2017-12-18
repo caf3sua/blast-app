@@ -91,3 +91,13 @@ highchart {
 	width : 100%;
 	height : 120px;
 }
+
+.min-h-270 {
+	min-height: 270px;	
+}
+
+
+.img-gallery-profile {
+	width: 100%;
+	height: 120px;
+}
