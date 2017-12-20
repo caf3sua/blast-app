@@ -1,27 +1,21 @@
 {
     "global": {
         "title": "Blast WebApp",
+        "header": {
+            "Home": "Home",
+            "TrendNew": "New trend",
+            "TrendHate": "Trend Hate",
+            "TrendLove": "Trend Love"
+        },
         "menu": {
+            "main": "Main",
             "home": "Home",
-            "Dashboard": "Dashboard",
-            "CellH": "Cell*H",
-            "Sctd": "Sự cố truyền dẫn",
-            "WO": "Work order",
-            "GNOC_CR": "GNOC Change request",
-            "CdbrPakh": "Cố định băng rộng - Phản ánh khách hàng",
-            "CdbrTkm": "Cố định băng rộng - New deploy",
-            "GdttCdbr": "Gián đoạn thông tin - Cố định băng rộng",
-            "CdbrTgxl": "Cố định băng rộng - Thời gian xử lý",
-            "CdbrScll": "Cố định băng rộng - Sự cố lặp lại",
-            "Paclm": "Paclm",
-            "Kiemtrahientruong": "Kiểm tra hiện trường",
-            "Qlgt": "Quản lý giảm trừ",
-            "Report": "Report",
-            "Qltarget": "Management target",
-            "GROUP": "Quản lý nhóm",
-            "DOMAIN": "Quản lý lĩnh vực",
-            "INFORMATION": "Quản lý thông tin cơ bản",
-            "language": "Language"
+            "trending": "Trending",
+            "trend-new": "Create a new Trend",
+            "trend-hate": "Hate",
+            "trend-love": "Love",
+            "full-screen": "Fullscreen Mode",
+            "logout": "Logout"
         },
         "placeholder" : {
         		"search" : "Search..."

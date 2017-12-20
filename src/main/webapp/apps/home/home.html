@@ -64,16 +64,16 @@
         <div class="p-y-md clearfix nav-active-{{app.setting.theme.primary}}">
           <ul class="nav nav-pills nav-sm">
             <li class="nav-item active">
-              <a class="nav-link" href data-toggle="tab" data-target="#tab_1">Post</a>
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_home_1" data-translate="blast.label.my-post">Post</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href data-toggle="tab" data-target="#tab_2">Love</a>
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_home_2" data-translate="blast.label.my-love">Love</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href data-toggle="tab" data-target="#tab_3">Hate</a>
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_home_3" data-translate="blast.label.my-hate">Hate</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href data-toggle="tab" data-target="#tab_4">Friends</a>
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_home_4" data-translate="blast.label.my-friends">Friends</a>
             </li>
           </ul>
         </div>
@@ -84,16 +84,16 @@
     <div class="row">
       <div class="col-sm-8 col-lg-9">
         <div class="tab-content">      
-          <div class="tab-pane p-v-sm active" id="tab_1">
+          <div class="tab-pane p-v-sm active" id="tab_home_1">
             		<div ui-include="'../apps/home/widget.user-post.html'"></div>
           </div>
-          <div class="tab-pane p-v-sm" id="tab_2">
+          <div class="tab-pane p-v-sm" id="tab_home_2">
           		<div ui-include="'../apps/home/widget.user-like.html'"></div>
           </div>
-          <div class="tab-pane p-v-sm" id="tab_3">
+          <div class="tab-pane p-v-sm" id="tab_home_3">
               	<div ui-include="'../apps/home/widget.user-hate.html'"></div>
           </div>
-          <div class="tab-pane p-v-sm" id="tab_4">
+          <div class="tab-pane p-v-sm" id="tab_home_4">
 				<div ui-include="'../apps/home/widget.friend.html'"></div>
           </div>
         </div>
@@ -102,70 +102,22 @@
         <div>
           <div class="box">
               <div class="box-header">
-                <h3>Who to follow</h3>
+                <h3>Friends on Social Network</h3>
               </div>
               <div class="box-divider m-a-0"></div>
-              <ul class="list no-border p-b">
-                <li class="list-item">
-                  <a herf class="list-left">
-                    <span class="w-40 avatar">
-                      <img src="content/assets/images/a4.jpg" alt="...">
-                      <i class="on b-white bottom"></i>
-                    </span>
-                  </a>
-                  <div class="list-body">
-                    <div><a href>Chris Fox</a></div>
-                    <small class="text-muted text-ellipsis">Designer, Blogger</small>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <a herf class="list-left">
-                    <span class="w-40 avatar">
-                      <img src="content/assets/images/a5.jpg" alt="...">
-                      <i class="on b-white bottom"></i>
-                    </span>
-                  </a>
-                  <div class="list-body">
-                    <div><a href>Mogen Polish</a></div>
-                    <small class="text-muted text-ellipsis">Writter, Mag Editor</small>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <a herf class="list-left">
-                    <span class="w-40 avatar">
-                      <img src="content/assets/images/a6.jpg" alt="...">
-                      <i class="busy b-white bottom"></i>
-                    </span>
-                  </a>
-                  <div class="list-body">
-                    <div><a href>Joge Lucky</a></div>
-                    <small class="text-muted text-ellipsis">Art director, Movie Cut</small>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <a herf class="list-left">
-                    <span class="w-40 avatar">
-                      <img src="content/assets/images/a7.jpg" alt="...">
-                      <i class="away b-white bottom"></i>
-                    </span>
-                  </a>
-                  <div class="list-body">
-                    <div><a href>Folisise Chosielie</a></div>
-                    <small class="text-muted text-ellipsis">Musician, Player</small>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <a herf class="list-left">
-                    <span class="w-40 circle green avatar">
-                      P
-                      <i class="away b-white bottom"></i>
-                    </span>
-                  </a>
-                  <div class="list-body">
-                    <div><a href>Peter</a></div>
-                    <small class="text-muted text-ellipsis">Musician, Player</small>
-                  </div>
-                </li>
+              <ul class="list no-border p-b max-h-friends">
+	                <li class="list-item" ng-repeat="friend in vm.socialFriends">
+	                  <a herf class="list-left">
+	                    <span class="w-40 avatar">
+	                      <img src="{{friend.picture.data.url}}" alt="...">
+	                      <i class="on b-white bottom"></i>
+	                    </span>
+	                  </a>
+	                  <div class="list-body">
+	                    <div><a href>{{friend.name}}</a></div>
+	                    <small class="text-muted text-ellipsis">Designer, Blogger</small>
+	                  </div>
+	                </li>
               </ul>
           </div>
           

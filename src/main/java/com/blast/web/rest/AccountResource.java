@@ -137,8 +137,10 @@ public class AccountResource {
         // Check and get display name
         List<SocialUserConnection> lstConnection = socialUserConnectionRepository.findAllByUserIdOrderByProviderIdAscRankAsc(userLogin);
         if (lstConnection != null && lstConnection.size() != 0) {
-        	SocialUserConnection connection = lstConnection.get(0);
-        	userDTO.setDisplayName(connection.getDisplayName());
+	        	SocialUserConnection connection = lstConnection.get(0);
+	        	userDTO.setDisplayName(connection.getDisplayName());
+	        	userDTO.setProviderId(connection.getProviderId());
+	        	userDTO.setProviderUserId(connection.getProviderUserId());
         }
         
         return new ResponseEntity<>(userDTO, HttpStatus.OK);

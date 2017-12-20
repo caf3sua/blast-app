@@ -1,0 +1,131 @@
+<div id="animate">
+	<div class="">
+      <div class="modal-header">
+      	<h5 class="modal-title">{{vm.keyword.name}}</h5>
+      </div>
+      <div class="modal-body text-center p-lg">
+      		<jhi-alert-error></jhi-alert-error>
+        		<!-- Body -->
+        		<div class="dker p-x">
+			    <div class="row">
+			      <div class="col-sm-6 push-sm-6">
+			      </div>
+			      <div class="col-sm-6 pull-sm-6">
+			        <div class="p-y-md clearfix nav-active-{{app.setting.theme.primary}}">
+			          <ul class="nav nav-pills nav-sm">
+			            <li class="nav-item">
+			              <a class="nav-link active" href data-toggle="tab" data-target="#tab_1"> <img ng-src="content/images/icon/tab-planet.png"/></a>
+			            </li>
+			            <li class="nav-item">
+			              <a class="nav-link" href data-toggle="tab" data-target="#tab_2"><img ng-src="content/images/icon/tab-trash.png"/></a>
+			            </li>
+			            <li class="nav-item">
+			              <a class="nav-link" href data-toggle="tab" data-target="#tab_3"><img ng-src="content/images/icon/tab-W.png"/></a>
+			            </li>
+			            <li class="nav-item">
+			              <a class="nav-link" href data-toggle="tab" data-target="#tab_4"><img ng-src="content/images/icon/tab-BlackArrow.png"/></a>
+			            </li>
+			          </ul>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+        		<div class="padding">
+			    <div class="row">
+			      <div class="col-sm-12 col-lg-12">
+			        <div class="tab-content">      
+			          <div class="tab-pane p-v-sm active" id="tab_1">
+			            		<div class="row">
+							     <div class="col-xs-6 col-sm-6 col-md-3">
+						    			<div class="box">
+										<div class="item">
+											<div class="item-overlay active p-a">
+												<!-- <a class="pull-right text-white _800">$ 4.99</a> -->
+												<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
+											</div>
+											<img src="{{vm.feedItem.imageUrl}}" class="img-discovery">
+										</div>
+										<div class="p-a">
+											<div class="m-b-xs text-white">
+												<a href class="m-r"><i class="fa fa-heart-o"></i> {{vm.feedItem.keywordInfo.keyword.numberLike}}</a>
+												<a href><i class="fa fa-times"></i> {{vm.feedItem.keywordInfo.keyword.numberHate}}</a>
+											</div>
+											<!-- <div class="m-b h-2x"><a href class="_800">{{item.representationFeedItem.keywords}}</a></div> -->
+										</div>
+									</div>
+						    		</div>
+						    		
+						    		<div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="item in vm.itemUserPost track by $index">
+						    			<div class="box">
+										<div class="item">
+											<div class="item-overlay active p-a">
+												<!-- <a class="pull-right text-white _800">$ 4.99</a> -->
+												<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
+											</div>
+											<img src="{{item.imageUrl}}" class="img-discovery">
+										</div>
+										<div class="p-a">
+											<div class="m-b-xs">
+												<!-- <a href class="m-r"><i class="fa fa-heart-o"></i> {{item.numberLike}}</a>
+												<a href><i class="fa fa-bookmark-o"></i> 20</a> -->
+											</div>
+											<div class="text-white"><a href class="_800">{{item.mainKeyword}}</a></div>
+										</div>
+									</div>
+						    		</div>
+							</div>
+			          </div>
+			          <div class="tab-pane p-v-sm" id="tab_2">
+			          	<!-- Tab 2: Amazon -->
+							<div class="col-xs-6 col-sm-6 col-md-3" ng-repeat="item in vm.amazonItem track by $index">
+						    			<div class="box">
+										<div class="item">
+											<div class="item-overlay active p-a">
+												<a class="pull-right text-danger _800">{{item.offer.formattedPrice}}</a>
+												<!-- <a href class="pull-left text-u-c label label-md danger">{{item.title}}</a> -->
+											</div>
+											<img src="{{item.mediumImage.url}}" class="img-discovery">
+										</div>
+										<div class="p-a">
+											<div class="text-white m-b-xs">
+												<!-- <a href class="m-r"><i class="fa fa-heart-o"></i> {{item.numberLike}}</a>
+												<a href><i class="fa fa-bookmark-o"></i> 20</a> -->
+											</div>
+											<div class="h-1x text-white"><a href class="_800">{{item.title}}</a></div>
+										</div>
+									</div>
+						    		</div>
+			          </div>
+			          <div class="tab-pane p-v-sm text-left" id="tab_3">
+		          			{{vm.wikiInfo}}
+			          </div>
+			          <div class="tab-pane p-v-sm" id="tab_4">
+			          	<div class="row">
+    							<div class="col-sm-6 offset-sm-3">
+					      		<div class="list-group m-b">
+							        <div class="list-group-item text-left" ng-repeat="social in vm.socials">
+							        		<div class="text-muted m-b pull-right">
+											<label class="md-switch">
+								                <input type="checkbox" ng-model="social.enabled">
+								                <i class="pink"></i>
+								                Private
+								              </label>
+										</div>
+							          {{ social.name }} 
+							        </div>
+							    </div>
+							</div>
+						</div>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			<!-- End body -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn danger p-x-md" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+</div>
+

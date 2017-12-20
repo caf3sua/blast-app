@@ -6,9 +6,9 @@
       .module('app')
       .controller('HomeController', HomeController);
     
-    HomeController.$inject = ['$scope', 'Principal', 'FeedItem', 'SocialFollow'];
+    HomeController.$inject = ['$controller', '$scope', 'Principal', 'FeedItem', 'SocialFollow', '$facebook'];
 
-      function HomeController($scope, Principal, FeedItem, SocialFollow){
+      function HomeController($controller, $scope, Principal, FeedItem, SocialFollow, $facebook){
     	  		var vm = this;
     	  		
     	  		vm.account = null;
@@ -17,20 +17,40 @@
     	        vm.itemUserLike = [];
     	        vm.itemUserHate = [];
     	        vm.followingUsers = [];
+    	        vm.socialFriends = [];
     	        
     	        // Init controller
     			(function initController() {
+    				// instantiate base controller
+    				$controller('BlastBaseController', {
+    					vm : vm
+    				});
+    				
     		        getAccount();
     		        loadItemByUserPost();
     		        loadItemByUserLike();
     		        loadItemByUserHate();
     		        loadFollowingUser();
+    		        // Load social friend
+    		        //loadSocialFriends();
     		    })();
     			
 //    			function openDetail(feedId) {
 //    				FeedItemDetailDialogService.open(feedId);
 //    			}
 
+    			function loadSocialFriends() {
+    				vm.account.providerUserId
+    				$facebook.api("/" + vm.account.providerUserId + "/taggable_friends").then( 
+			 		      function(response) {
+			 		    	  		console.log(response);
+			 		    	  		vm.socialFriends = response.data;
+			 		      },
+			 		      function(err) {
+			 		    	  		consonle.log('errr:' + err);
+			 		      });
+    			}
+    			
     			function loadFollowingUser() {
     				SocialFollow.getFollowing({
     					providerId: 'facebook'
@@ -103,6 +123,7 @@
     	                vm.account = account;
     	                vm.isAuthenticated = Principal.isAuthenticated;
     	                console.log(vm.account);
+    	                loadSocialFriends();
     	            });
     	        }
       }

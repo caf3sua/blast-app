@@ -1,8 +1,11 @@
 {
-    "dashboard": {
-    		"title": "Dashboard",
+    "blast": {
     		"label" : {
-			"hello" : "Hi {{username}}, Welcome back"    		
+			"hello" : "Hi {{username}}, Welcome back",
+			"my-post": "Post",
+			"my-love": "Love",
+			"my-hate": "Hate",
+	    		"my-friends": "Friends"
     		}
     }
 }

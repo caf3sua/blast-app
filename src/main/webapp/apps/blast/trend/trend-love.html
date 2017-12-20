@@ -30,7 +30,9 @@
 							<div class="item-overlay active p-a">
 								<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
 							</div>
-							<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-banner">
+							<a href ng-click="vm.openDetail(item.representationFeedItem.id, item.name)">
+								<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-banner">
+							</a>
 						</div>
 						<div class="p-a">
 							<a href ng-repeat="user in item.keywordInfo.lstUserLike"><img src="{{user.imageUrl}}" class="w-32 rounded" alt="{{user.displayName}}"></a>
@@ -68,7 +70,9 @@
 						<!-- <a class="pull-right text-white _800">$ 4.99</a> -->
 						<a href class="pull-left text-u-c label label-md danger">{{item.name}}</a>
 					</div>
-					<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-discovery">
+					<a href ng-click="vm.openDetail(item.representationFeedItem.id, item.name)">
+						<img src="{{item.representationFeedItem.imageThumbUrl}}" class="img-discovery">
+					</a>
 				</div>
 				<div class="p-a">
 					<div class="text-muted m-b-xs">

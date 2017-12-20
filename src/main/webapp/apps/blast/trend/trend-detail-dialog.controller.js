@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('blastApp')
-        .controller('TrendDetailKeywordDialogController', TrendDetailKeywordDialogController);
+        .module('app')
+        .controller('TrendDetailDialogController', TrendDetailDialogController);
 
-    TrendDetailKeywordDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'feed', 'Trend', 'FeedItem', 'Keyword'];
+    TrendDetailDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'feed', 'Trend', 'FeedItem', 'Keyword'];
 
-    function TrendDetailKeywordDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, feed, Trend, FeedItem, Keyword ) {
+    function TrendDetailDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, feed, Trend, FeedItem, Keyword ) {
         var vm = this;
 
         vm.trend = entity;
@@ -37,6 +37,10 @@
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
+        
+        $timeout(function (){
+            angular.element('.form-group:eq(1)>input').focus();
+        });
 
         // Init controller
 		(function initController() {

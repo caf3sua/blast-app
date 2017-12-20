@@ -31,9 +31,8 @@
  		})();
  		
  		function getMoreInformationFb() {
- 		    $facebook.api("/me", {fields: 'email,name,last_name,picture'}).then( 
+ 		    $facebook.api("/me", {fields: 'id,email,name,last_name,picture,friends'}).then( 
  		      function(response) {
-	 		    	  	debugger
 	 		        vm.isLoggedIn = true;
 	 		        vm.data.displayName = response.name;
 	 		        vm.data.email = response.email;

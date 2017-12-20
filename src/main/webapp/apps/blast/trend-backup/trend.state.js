@@ -163,12 +163,12 @@
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                    	entity: ['Keyword', function(Keyword) {
-                            return Keyword.getByName({name : $stateParams.keywordName}).$promise;
-                        }]
-                		, feed: ['FeedItem', function(FeedItem) {
-                            return FeedItem.get({id : $stateParams.feedId}).$promise;
-                        }]
+	                    	entity: ['Keyword', function(Keyword) {
+	                            return Keyword.getByName({name : $stateParams.keywordName}).$promise;
+	                        }]
+	                		, feed: ['FeedItem', function(FeedItem) {
+	                            return FeedItem.get({id : $stateParams.feedId}).$promise;
+	                        }]
                     }
                 }).result.then(function() {
                     $state.go('trend', null, { reload: 'trend' });

@@ -45,6 +45,8 @@
                     }],
                     loadPlugin: function ($ocLazyLoad) {
 		            		return $ocLazyLoad.load(['ui.bootstrap', 'mgcrea.ngStrap'
+		            			, 'apps/blast/trend.service.js'
+		            			, 'apps/blast/trend/trend-detail-dialog.controller.js'
 		            			, 'apps/blast/nav.controller.js'
 		            			, 'apps/blast/base.controller.js']);
 			        }

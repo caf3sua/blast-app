@@ -9,30 +9,36 @@
     
     //KpiBaseController.$inject = ['$scope'];
 
-    function BlastBaseController(vm, $uibModal, ProfileService, $alert){
+    function BlastBaseController(vm, $uibModal, ProfileService, $alert, Keyword, FeedItem){
     		vm.message = { name: 'default entry from BlastBaseController' };
 
     		
     	    // add any other shared functionality here.
-    		vm.open = open;
+    		vm.openDetail = openDetail;
     		vm.showMessage = showMessage;
     		
-    		function open() {
+    		function openDetail(feedId, keywordName) {
 		    var modalInstance = $uibModal.open({
 		      backdrop: true,
 		      animation: true,
 		      ariaLabelledBy: 'modal-title',
 		      ariaDescribedBy: 'modal-body',
-		      templateUrl: 'apps/blast/trend/trend-new-dialog.html',
-		      controller: 'TrendNewDialogController',
+		      templateUrl: 'apps/blast/trend/trend-detail-dialog.html',
+		      controller: 'TrendDetailDialogController',
 		      controllerAs: 'vm',
 		      size: 'lg',
 		      resolve: {
+		    	  	entity: ['Keyword', function(Keyword) {
+                      return Keyword.getByName({name : keywordName}).$promise;
+                  }]
+          		, feed: ['FeedItem', function(FeedItem) {
+                      return FeedItem.get({id : feedId}).$promise;
+                  }]
 		      }
 		    });
 
 		    modalInstance.result.then(function (selectedItem) {
-		      vm.selected = selectedItem;
+		    		vm.selected = selectedItem;
 		    }, function () {
 		      
 		    });

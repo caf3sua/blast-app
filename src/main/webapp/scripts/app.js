@@ -59,8 +59,8 @@
 		   }());
 		});
     
-    function configFacebook( $facebookProvider) {
-    		$facebookProvider.setAppId('120769275152754');
+    function configFacebook( $facebookProvider, FACEBOOK_APP_ID) {
+    		$facebookProvider.setAppId(FACEBOOK_APP_ID);
     }
     
     run.$inject = ['stateHandler', 'translationHandler'];

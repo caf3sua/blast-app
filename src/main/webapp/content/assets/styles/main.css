@@ -101,3 +101,8 @@ highchart {
 	width: 100%;
 	height: 120px;
 }
+
+.max-h-friends {
+	max-height: 346px;
+    overflow: auto;
+}

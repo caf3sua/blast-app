@@ -1,8 +1,11 @@
 {
-    "dashboard": {
-    		"title": "Dashboard",
+    "blast": {
     		"label" : {
-			"hello" : "Chào {{username}} đã quay trở lại"    		
+			"hello" : "Hi {{username}}, Welcome back",
+			"my-post": "Tạo",
+			"my-love": "Thích",
+			"my-hate": "Ghét",
+	    		"my-friends": "Bạn bè"
     		}
     }
 }
