@@ -15,7 +15,7 @@
 
 spring:
     profiles:
-        include: swagger
+        include: swagger,no-liquibase
     devtools:
         restart:
             enabled: false
@@ -26,9 +26,9 @@ spring:
         #url: jdbc:postgresql://www1.itsol.vn:5432/blast
         #username: blast
         #password: 12345678
-        url: jdbc:postgresql://35.201.143.13:5432/blast
-        username: blast
-        password: 12345678
+        url: jdbc:postgresql://ec2-174-129-239-0.compute-1.amazonaws.com:5432/d3m5ebg5ina86a
+        username: jqtylkyyglqwyw
+        password: 5106e6ef47e64ab776ffbcb50f7340ed67e17c3299531744234d9f5eb0bb5b03
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
